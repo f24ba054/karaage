@@ -48,24 +48,26 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('My App'),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: tabs,
-        ),
-      ),
-
-      body: TabBarView(
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('My App'),
+    ),
+    bottomNavigationBar:Container(
+      color: Colors.blue,
+      child:TabBar(
         controller: _tabController,
-        children: tabs.map((Tab tab) {
-          return createTab(tab);
-        }).toList(),
+        tabs: tabs,
       ),
-    );
-  }
+    ),
+    body: TabBarView(
+      controller: _tabController,
+      children: tabs.map((Tab tab) {
+        return createTab(tab);
+      }).toList(),
+    ),
+  );
+}
 
   Widget createTab(Tab tab) {
     return Center(
